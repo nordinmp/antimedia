@@ -1,9 +1,9 @@
 part of asset_library;
 
 class HeaderBar extends StatelessWidget implements PreferredSizeWidget{
-  const HeaderBar({super.key, this.HeaderTitle});
-  final HeaderTitle;
-  @override
+  const HeaderBar({super.key, this.headerTitle});
+  final  headerTitle ;
+ @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 
   @override
@@ -17,7 +17,7 @@ class HeaderBar extends StatelessWidget implements PreferredSizeWidget{
               icon: const Icon(Icons.search)
           ),
           flexibleSpace: FlexibleSpaceBar(
-            title: Text(HeaderTitle),
+            title: Text(headerTitle),
           ),
           actions: [
             IconButton(onPressed: () {}, icon: const Icon(Icons.add)),

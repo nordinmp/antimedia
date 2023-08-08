@@ -1,6 +1,5 @@
 library asset_library;
 import 'package:flutter/material.dart';
-import 'package:antimedia/router_generator.dart';
 import 'package:intl/intl.dart';
 
 part 'assets/app_bar.dart';
