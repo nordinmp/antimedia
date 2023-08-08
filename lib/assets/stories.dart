@@ -1,7 +1,9 @@
 part of asset_library;
 
+
 class Stories extends StatefulWidget {
-  const Stories({Key? key}) : super(key: key);
+  final DateTime date;
+  const Stories({Key? key, required this.date,}) : super(key: key);
   @override
   _StoriesState createState() => _StoriesState();
 }
@@ -10,6 +12,7 @@ class _StoriesState extends State<Stories> {
   double height = 314;
   double width = 354;
   bool isSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -56,9 +59,9 @@ class _StoriesState extends State<Stories> {
                     ),
                     Wrap(
                       spacing: 8,
-                      children: const [
+                      children: [
                         Text(
-                          "Start",
+                          "${DateFormat('yyyy-MM-dd').format(widget.date)}",
                           style: TextStyle(
                             fontSize: 11,
                           ),

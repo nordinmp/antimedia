@@ -3,32 +3,22 @@
 import 'package:flutter/material.dart';
 import 'package:antimedia/asset_library.dart';
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
 
+class MyHomePage extends StatelessWidget {
+  const MyHomePage({Key? key}) : super(key: key);
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const HeaderBar(),
-      body: Center(
+      appBar: HeaderBar(HeaderTitle: 'header'),
+      body:Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const <Widget>[
-            Stories()
+          children: [
+            Stories(date: DateTime(2023, 9, 18))
           ],
         ),
       ),
-      bottomNavigationBar: const NavBar(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Take a photo',
-        child: const Icon(Icons.photo_camera_outlined),
-      ),
+      bottomNavigationBar: NavBar(),
     );
   }
 }
