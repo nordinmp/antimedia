@@ -1,4 +1,5 @@
 part of asset_library;
+
 class NavBar extends StatefulWidget {
   const NavBar({Key? key, required this.indexNumber }) : super(key: key);
   final int indexNumber;

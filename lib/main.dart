@@ -1,31 +1,53 @@
 import 'package:flutter/material.dart';
+
+import 'package:antimedia2/api/firebase_api.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:firebase_analytics/observer.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
+
 import 'color_schemes.g.dart';
 import 'router_generator.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+
+
+
+FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
+
+class MyApp extends StatelessWidget {
+  final GlobalKey<NavigatorState> navigatorKey;
+
+  const MyApp({Key? key, required this.navigatorKey}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final FirebaseApi firebaseApi = FirebaseApi(navigatorKey);
+    firebaseApi.initNotifications(context);
+
+    return MaterialApp(
+      title: 'Antimedia',
+      theme: ThemeData(
+        colorScheme: lightColorScheme,
+        useMaterial3: true,
+      ),
+      initialRoute: '/',
+      navigatorKey: navigatorKey,
+      onGenerateRoute: RouteGenerator.generateRoute,
+      navigatorObservers: [
+        FirebaseAnalyticsObserver(analytics: analytics),
+      ],
+    );
+  }
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(const MyApp());
-}
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key,});
+  final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-  @override
-  Widget build(BuildContext context) {
-    //FirebaseDatabase database = FirebaseDatabase.instance;
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: lightColorScheme,
-        useMaterial3: true,
-      ),
-      initialRoute: '/',
-      onGenerateRoute: RouteGenerator.generateRoute,
-    );
-  }
+  runApp(MyApp(navigatorKey: navigatorKey));
 }

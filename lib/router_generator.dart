@@ -13,9 +13,11 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (_) => const MyHomePage());
       case 'calendar':
-        return MaterialPageRoute(builder: (_) => const SearchScreen());
+        return MaterialPageRoute(builder: (_) => const CalendarScreen());
       case 'profile':
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
+      case 'camera':
+        return MaterialPageRoute(builder: (_) => const CameraScreen());
       default:
         return _errorRoute();
     }
@@ -29,6 +31,8 @@ class RouteGenerator {
         return 'calendar';
       case 2:
         return 'profile';
+      case 2:
+        return 'camera';
       default:
         return '/';
     }

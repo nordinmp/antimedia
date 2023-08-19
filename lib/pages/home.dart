@@ -63,7 +63,9 @@ class MyHomePage extends StatelessWidget {
       ),
       bottomNavigationBar: const NavBar(indexNumber: 0,),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).pushNamed('camera');
+        },
         tooltip: 'Take a photo',
         child: const Icon(Icons.photo_camera_outlined),
       ),

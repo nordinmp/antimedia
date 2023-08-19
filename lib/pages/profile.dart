@@ -1,7 +1,5 @@
 
 import 'package:flutter/material.dart';
-import '../color_schemes.g.dart';
-import '../router_generator.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
