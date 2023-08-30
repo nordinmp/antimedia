@@ -30,8 +30,11 @@ class FirebaseApi {
     if (message == null) return;
 
     navigatorKey.currentState?.pushNamed(
-      'camera', // Replace with your actual route name for the camera screen
-      arguments: message,
+      'camera',
+      arguments: {
+        'message': message,
+        'isTime': true, // Update the value of isTime as needed
+      },
     );
   }
 

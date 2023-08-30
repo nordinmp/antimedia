@@ -17,7 +17,8 @@ class RouteGenerator {
       case 'profile':
         return MaterialPageRoute(builder: (_) => const ProfileScreen());
       case 'camera':
-        return MaterialPageRoute(builder: (_) => const CameraScreen());
+        final isTime = (args as Map<String, dynamic>)['isTime'] ?? false;
+        return MaterialPageRoute(builder: (_) => CameraScreen(isTime: isTime));
       default:
         return _errorRoute();
     }
